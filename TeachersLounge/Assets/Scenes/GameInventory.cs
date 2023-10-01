@@ -73,16 +73,16 @@ public class GameInventory : MonoBehaviour {
 
             // Item number updates. Comment out if each item is unique (2/2).
             Text item1TextB = item1Text.GetComponent<Text>();
-            item1TextB.text = ("Resource1: " + item1num);
+            item1TextB.text = ("Paper: " + item1num);
 
              Text item2TextB = item2Text.GetComponent<Text>();
-            item2TextB.text = ("Resource2: " + item2num);
+            item2TextB.text = ("Book: " + item2num);
 
             Text item3TextB = item3Text.GetComponent<Text>();
-            item3TextB.text = ("Resource3: " + item3num);
+            item3TextB.text = ("Laptop: "  + item3num);
 
             Text item4TextB = item4Text.GetComponent<Text>();
-            item4TextB.text = ("Resource4: " + item4num);
+            item4TextB.text = ("FirstAid: " + item4num);
 
             Text item5TextB = item5Text.GetComponent<Text>();
             item5TextB.text = ("Resource5:" + item5num);
@@ -96,10 +96,10 @@ public class GameInventory : MonoBehaviour {
 
       public void InventoryAdd(string item){
             string foundItemName = item;
-            if (foundItemName == "item1") {item1bool = true; item1num ++;}
-            else if (foundItemName == "item2") {item2bool = true; item2num ++;}
-            else if (foundItemName == "item3") {item3bool = true; item3num ++;}
-            else if (foundItemName == "item4") {item4bool = true; item4num ++;}
+            if (foundItemName == "paper") {item1bool = true; item1num ++;}
+            else if (foundItemName == "Book") {item2bool = true; item2num ++;}
+            else if (foundItemName == "laptop") {item3bool = true; item3num ++;}
+            else if (foundItemName == "First aid kit") {item4bool = true; item4num ++;}
             else if (foundItemName == "item5") {item5bool = true; item5num ++;}
             else if (foundItemName == "item6") {item6bool = true; item6num ++;}
             else if (foundItemName == "item7") {item5bool = true; item7num ++;}
@@ -119,30 +119,30 @@ public class GameInventory : MonoBehaviour {
                   // Add any other intended effects: new item crafted, speed boost, slow time, etc
              }
              else if (itemRemove == "item2") {
-                   item2num -= -1;
+                   item2num -= 1;
                    if (item2num <= 0) { item2bool =false; }
             //       // Add any other intended effects
                }
              else if (itemRemove == "item3") {
-                   item3num -= -1;
+                   item3num -= 1;
                    if (item3num <= 0) { item3bool =false; }
                      // Add any other intended effects
              }
              else if (itemRemove == "item4") {
-                   item4num -= -1;
+                   item4num -= 1;
                    if (item4num <= 0) { item4bool =false; }
                      // Add any other intended effects
              }
              else if (itemRemove == "item5") {
-                   item5num -= -1;
+                   item5num -= 1;
                    if (item5num <= 0) { item5bool =false; }
                      // Add any other intended effects
             }else if (itemRemove == "item6") {
-                   item6num -= -1;
+                   item6num -= 1;
                    if (item6num <= 0) { item6bool =false; }
                      // Add any other intended effects
             }else if (itemRemove == "item7") {
-                   item7num -= -1;
+                   item7num -= 1;
                    if (item7num <= 0) { item7bool =false; }
                      // Add any other intended effects
             }

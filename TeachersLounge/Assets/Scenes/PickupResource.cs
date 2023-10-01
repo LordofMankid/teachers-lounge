@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour{
 
       private GameInventory gameInventory;
-      public string itemName = "item1";
+      public string itemName = "";
 
       void Start(){
             gameInventory = GameObject.FindWithTag("GameHandler").GetComponent<GameInventory>();
@@ -13,6 +13,7 @@ public class PickUp : MonoBehaviour{
  
       public void OnTriggerEnter2D (Collider2D other){
             if (other.gameObject.tag == "Player"){
+                itemName = gameObject.tag;
                 gameInventory.InventoryAdd(itemName);     
             }
       }
