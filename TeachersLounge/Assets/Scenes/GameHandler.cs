@@ -19,6 +19,6 @@ public class GameHandler : MonoBehaviour {
 
     void UpdatePoints(){
         Text pointsTextB = pointsText.GetComponent<Text>();
-        pointsTextB.text = "Points:" + pointsNum;
+        pointsTextB.text = "Productivity Points:" + pointsNum;
     }
 }
