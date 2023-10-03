@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TaskManager : MonoBehaviour
 {
-
+    public GameObject taskIconPrefab;
+    public Text taskDescriptionText;
     public List<Task> potentialTasks = new List<Task>();
-    public float taskGenerationInterval = 30.0f; // Time between generating tasks in seconds
-    public float taskDuration = 60.0f; // Time a task remains on the screen in seconds
+    public float taskGenerationInterval = 5.0f; // Time between generating tasks in seconds
+    public float taskDuration = 3.0f; // Time a task remains on the screen in seconds
 
     private float timeSinceLastTask = 0.0f;
     private List<Task> activeTasks = new List<Task>(); // Store active tasks
@@ -31,8 +33,11 @@ public class TaskManager : MonoBehaviour
     {
         // Add tasks to the list ***LATER ADD WHICH RESOURCES
         potentialTasks.Add(new Task("Grading", "Grade assignments in classroom", 10));
-        potentialTasks.Add(new Task("Lesson Planning", "Plan the next lesson", 15));
-        potentialTasks.Add(new Task("Management", "Handle administrative tasks", 20));
+        potentialTasks.Add(new Task("Update Software", "Update software in the computer lab", 15));
+        potentialTasks.Add(new Task("Lesson Planning", "Plan the next lesson in the library", 20));
+        potentialTasks.Add(new Task("Handle an Injury", "Grab a first-aid kit from the nurse's office", 20));
+
+        GenerateRandomTask();
 
     }
 
@@ -58,19 +63,47 @@ public class TaskManager : MonoBehaviour
         // }
     }
 
-    private void GenerateRandomTask() {
-        // Randomly select a task from the potentialTasks list
-        if (potentialTasks.Count > 0) {
-            int randomIndex = Random.Range(0, potentialTasks.Count);
-            Task randomTask = potentialTasks[randomIndex];
-            // randomTask.timeRemaining = 60.0f; // Set the initial timeRemaining *** FIX THIS
-            Debug.Log("New task: " + randomTask.description); // ADD MORE INFO WHEN TASKS POP UP
-            activeTasks.Add(randomTask); // Add the task to the active tasks list
+private void GenerateRandomTask()
+{
+    // Check if potentialTasks is not empty
+    if (potentialTasks.Count > 0)
+    {
+        int randomIndex = Random.Range(0, potentialTasks.Count);
+        Task randomTask = potentialTasks[randomIndex];
 
-            // Set timer for removing tasks
-            StartCoroutine(RemoveTaskAfterDelay(randomTask));
+        // Enable the task icon GameObject before instantiating
+        taskIconPrefab.SetActive(true);
+
+        // Instantiate the task icon prefab at the task position
+        Vector2 taskPosition = GetTaskPositionForTask(randomTask);
+        Instantiate(taskIconPrefab, taskPosition, Quaternion.identity);
+
+        // Find the Task Description Text GameObject by tag
+        GameObject taskDescriptionTextObject = GameObject.FindGameObjectWithTag("TaskDescriptionText");
+
+        // Check if the GameObject is found
+        if (taskDescriptionTextObject != null)
+        {
+            // Get the Text component from the found GameObject
+            Text taskDescriptionText = taskDescriptionTextObject.GetComponent<Text>();
+
+            // Update the text component
+            taskDescriptionText.text = "Task: " + randomTask.description + "\nDetails: " + randomTask.taskDetail;
         }
+        else
+        {
+            Debug.LogError("TaskDescriptionText GameObject not found or not tagged!");
+        }
+
+        // Set timer for removing tasks
+        StartCoroutine(RemoveTaskAfterDelay(randomTask));
     }
+    else
+    {
+        Debug.LogError("potentialTasks is empty! Add tasks to the list.");
+    }
+}
+
 
     // private void RemoveTask(Task task) {
     //     // Remove task
@@ -82,5 +115,37 @@ public class TaskManager : MonoBehaviour
 
         // Remove the task
         Debug.Log("Task removed: " + task.description);
+        taskIconPrefab.SetActive(false);
     }
+
+    // Define a method to get the position associated with a task
+    private Vector2 GetTaskPositionForTask(Task task)
+    {
+        // You can implement a logic here to return the position based on the task.
+        // For example, you can use a dictionary to map tasks to positions.
+        // Here's a simplified example assuming you have predefined positions:
+
+        if (task.description == "Grading")
+        {
+            return new Vector2(4f, 2f); // Example position for "Grading" task
+        }
+        else if (task.description == "Update Software")
+        {
+            return new Vector2(-4f, 2f); // Example position for "Update Software" task
+        }
+        else if (task.description == "Handle an Injury")
+        {
+            return new Vector2(4f, -2f);
+        }
+        else if (task.description == "Lesson Planning")
+        {
+            return new Vector2(-4f, -2f);
+        }
+        // Add more conditions for other tasks
+
+        // Default position if no match is found
+        return Vector2.zero;
+    }
+
+    
 }

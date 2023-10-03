@@ -11,6 +11,8 @@ TagManager:
   - laptop
   - Book
   - First aid kit
+  - TaskDescriptionText
+  - taskIcon
   layers:
   - Default
   - TransparentFX
