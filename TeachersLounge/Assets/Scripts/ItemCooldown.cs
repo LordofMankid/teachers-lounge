@@ -8,7 +8,7 @@ public class ItemCooldown : MonoBehaviour
 
     public bool isVisible = false;
 
-    public float cooldownTimer = 5f;
+    public float cooldownTimer = 1f;
 
     void Start()
     {
@@ -25,11 +25,7 @@ public class ItemCooldown : MonoBehaviour
         {
             item.SetActive(false);
         }
-        Debug.Log("hi");
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            startCooldown();
-        }
+
     }
 
     public void startCooldown()
@@ -43,7 +39,7 @@ public class ItemCooldown : MonoBehaviour
 
     IEnumerator DelayItemAway()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(cooldownTimer);
         isVisible = true;
     }
 }

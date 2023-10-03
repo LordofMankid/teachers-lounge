@@ -96,10 +96,10 @@ public class GameInventory : MonoBehaviour {
 
       public void InventoryAdd(string item){
             string foundItemName = item;
-            if (foundItemName == "paper") {item1bool = true; item1num ++;}
+            if (foundItemName == "Paper") {item1bool = true; item1num ++;}
             else if (foundItemName == "Book") {item2bool = true; item2num ++;}
-            else if (foundItemName == "laptop") {item3bool = true; item3num ++;}
-            else if (foundItemName == "First aid kit") {item4bool = true; item4num ++;}
+            else if (foundItemName == "Laptop") {item3bool = true; item3num ++;}
+            else if (foundItemName == "First Aid") {item4bool = true; item4num ++;}
             else if (foundItemName == "item5") {item5bool = true; item5num ++;}
             else if (foundItemName == "item6") {item6bool = true; item6num ++;}
             else if (foundItemName == "item7") {item5bool = true; item7num ++;}
