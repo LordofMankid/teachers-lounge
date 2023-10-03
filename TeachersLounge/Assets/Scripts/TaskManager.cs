@@ -76,7 +76,7 @@ private void GenerateRandomTask()
 
         // Instantiate the task icon prefab at the task position
         Vector2 taskPosition = GetTaskPositionForTask(randomTask);
-        Instantiate(taskIconPrefab, taskPosition, Quaternion.identity);
+        GameObject newTask = Instantiate(taskIconPrefab, taskPosition, Quaternion.identity);
 
         // Find the Task Description Text GameObject by tag
         GameObject taskDescriptionTextObject = GameObject.FindGameObjectWithTag("TaskDescriptionText");
@@ -96,7 +96,7 @@ private void GenerateRandomTask()
         }
 
         // Set timer for removing tasks
-        StartCoroutine(RemoveTaskAfterDelay(randomTask));
+        StartCoroutine(RemoveTaskAfterDelay(randomTask, newTask));
     }
     else
     {
@@ -110,12 +110,12 @@ private void GenerateRandomTask()
     //     Debug.Log("Task removed: " + task.description); // DIFFERENTIATE BETWEEN COMPLETING AND LOSING TASKS
     // }
 
-    private IEnumerator RemoveTaskAfterDelay(Task task) {
+    private IEnumerator RemoveTaskAfterDelay(Task task, GameObject toBeRemoved) {
         yield return new WaitForSeconds(taskDuration);
 
         // Remove the task
         Debug.Log("Task removed: " + task.description);
-        taskIconPrefab.SetActive(false);
+        toBeRemoved.SetActive(false);
     }
 
     // Define a method to get the position associated with a task
