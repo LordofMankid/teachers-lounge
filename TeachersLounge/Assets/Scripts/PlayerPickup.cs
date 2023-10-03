@@ -15,7 +15,13 @@ public class PlayerPickUp : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.parent.tag == "Resource")
+        if (other.gameObject.tag == "taskIcon")
+        {
+            Debug.Log("task hit");
+            other.gameObject.GetComponent<TaskIcon>().completeTask(other.gameObject);
+            
+        } 
+        else if (other.transform.parent.tag == "Resource")
         {
             Debug.Log("object hit");
             itemName = other.transform.parent.name;
@@ -23,5 +29,7 @@ public class PlayerPickUp : MonoBehaviour
             other.gameObject.GetComponentInParent<ItemCooldown>().startCooldown();
             gameInventory.InventoryAdd(itemName);
         }
+
+
     }
 }

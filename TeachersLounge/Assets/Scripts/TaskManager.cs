@@ -18,12 +18,14 @@ public class TaskManager : MonoBehaviour
         public string description;
         public string taskDetail;
         public int points;
+        public string cost;
         // public float timeRemaining;
 
-        public Task(string desc, string detail, int pts) {
+        public Task(string desc, string detail, int pts, string taskCost) {
             description = desc;
             taskDetail = detail;
             points = pts;
+            cost = taskCost;
             // timeRemaining = taskDuration;
         }
     }
@@ -32,10 +34,10 @@ public class TaskManager : MonoBehaviour
     void Start()
     {
         // Add tasks to the list ***LATER ADD WHICH RESOURCES
-        potentialTasks.Add(new Task("Grading", "Grade assignments in classroom", 10));
-        potentialTasks.Add(new Task("Update Software", "Update software in the computer lab", 15));
-        potentialTasks.Add(new Task("Lesson Planning", "Plan the next lesson in the library", 20));
-        potentialTasks.Add(new Task("Handle an Injury", "Grab a first-aid kit from the nurse's office", 20));
+        potentialTasks.Add(new Task("Grading", "Grade assignments in classroom", 10, "Paper"));
+        potentialTasks.Add(new Task("Update Software", "Update software in the computer lab", 15, "Computer"));
+        potentialTasks.Add(new Task("Lesson Planning", "Plan the next lesson in the library", 20, "Book"));
+        potentialTasks.Add(new Task("Handle an Injury", "Grab a first-aid kit from the nurse's office", 20, "First Aid Kit"));
 
         GenerateRandomTask();
 
@@ -63,6 +65,8 @@ public class TaskManager : MonoBehaviour
         // }
     }
 
+
+
 private void GenerateRandomTask()
 {
     // Check if potentialTasks is not empty
@@ -77,7 +81,7 @@ private void GenerateRandomTask()
         // Instantiate the task icon prefab at the task position
         Vector2 taskPosition = GetTaskPositionForTask(randomTask);
         GameObject newTask = Instantiate(taskIconPrefab, taskPosition, Quaternion.identity);
-
+            newTask.GetComponent<TaskIcon>().SetTask(randomTask);
         // Find the Task Description Text GameObject by tag
         GameObject taskDescriptionTextObject = GameObject.FindGameObjectWithTag("TaskDescriptionText");
 
@@ -115,8 +119,9 @@ private void GenerateRandomTask()
 
         // Remove the task
         Debug.Log("Task removed: " + task.description);
-        toBeRemoved.SetActive(false);
+        Destroy(toBeRemoved);
     }
+
 
     // Define a method to get the position associated with a task
     private Vector2 GetTaskPositionForTask(Task task)

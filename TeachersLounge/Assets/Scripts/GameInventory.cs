@@ -111,24 +111,25 @@ public class GameInventory : MonoBehaviour {
             }
       }
 
-      public void InventoryRemove(string item){
+      public bool InventoryRemove(string item){
             string itemRemove = item;
-            if (itemRemove == "item1") {
+        bool success = true;
+            if (itemRemove == "Paper") {
                   item1num -= 1;
                   if (item1num <= 0) { item1bool =false; }
                   // Add any other intended effects: new item crafted, speed boost, slow time, etc
              }
-             else if (itemRemove == "item2") {
+             else if (itemRemove == "Book") {
                    item2num -= 1;
                    if (item2num <= 0) { item2bool =false; }
             //       // Add any other intended effects
                }
-             else if (itemRemove == "item3") {
+             else if (itemRemove == "Laptop") {
                    item3num -= 1;
                    if (item3num <= 0) { item3bool =false; }
                      // Add any other intended effects
              }
-             else if (itemRemove == "item4") {
+             else if (itemRemove == "First Aid") {
                    item4num -= 1;
                    if (item4num <= 0) { item4bool =false; }
                      // Add any other intended effects
@@ -146,8 +147,11 @@ public class GameInventory : MonoBehaviour {
                    if (item7num <= 0) { item7bool =false; }
                      // Add any other intended effects
             }
-            else { Debug.Log("This item does not exist to be removed"); }
+            else { Debug.Log("This item does not exist to be removed");
+            success = false;    
+        }
             InventoryDisplay();
+        return success;
       }
 
       //public void CoinChange(int amount){

@@ -21,4 +21,6 @@ public class GameHandler : MonoBehaviour {
         Text pointsTextB = pointsText.GetComponent<Text>();
         pointsTextB.text = "Productivity Points:" + pointsNum;
     }
+
+
 }

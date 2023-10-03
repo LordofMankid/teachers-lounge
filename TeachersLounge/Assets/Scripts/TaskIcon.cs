@@ -15,4 +15,16 @@ public class TaskIcon : MonoBehaviour
     {
         return associatedTask;
     }
+
+    public void completeTask(GameObject toBeDestroyed)
+    {
+        if(FindAnyObjectByType<GameInventory>().InventoryRemove(associatedTask.cost) == true)
+        {
+            FindAnyObjectByType<GameHandler>().AddPoints(associatedTask.points);
+            Destroy(toBeDestroyed);
+        }
+
+
+
+    }
 }

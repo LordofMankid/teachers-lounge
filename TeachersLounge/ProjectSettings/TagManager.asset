@@ -13,6 +13,7 @@ TagManager:
   - First aid kit
   - TaskDescriptionText
   - taskIcon
+  - Task
   layers:
   - Default
   - TransparentFX
