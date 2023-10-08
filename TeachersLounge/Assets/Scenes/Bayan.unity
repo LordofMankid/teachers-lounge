@@ -142,11 +142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2673023152058748742, guid: 7cff4866944bf2c429b8e76a3ad844d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.67
+      value: 14.07
       objectReference: {fileID: 0}
     - target: {fileID: 2673023152058748742, guid: 7cff4866944bf2c429b8e76a3ad844d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.66
+      value: 14.97
       objectReference: {fileID: 0}
     - target: {fileID: 2673023152058748742, guid: 7cff4866944bf2c429b8e76a3ad844d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 293871543}
   m_Layer: 5
   m_Name: textTimer
-  m_TagString: Untagged
+  m_TagString: gameTimer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 700}
+  m_AnchoredPosition: {x: 550, y: 669}
   m_SizeDelta: {x: 160, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &293871543
@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 120
+  timerTextTag: gameTimer
   timerText: {fileID: 0}
 --- !u!114 &293871544
 MonoBehaviour:
@@ -367,11 +368,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154301301324977667, guid: 17fde7943926d704fafa92eac71b755f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.29
+      value: -13.7
       objectReference: {fileID: 0}
     - target: {fileID: 4154301301324977667, guid: 17fde7943926d704fafa92eac71b755f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.1
+      value: 4.87
       objectReference: {fileID: 0}
     - target: {fileID: 4154301301324977667, guid: 17fde7943926d704fafa92eac71b755f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -605,18 +606,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679891385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 139227643}
+  m_Father: {fileID: 1339046636}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 536.5, y: -77}
-  m_SizeDelta: {x: -1099, y: 100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.9999695, y: -16}
+  m_SizeDelta: {x: 350, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679891387
 MonoBehaviour:
@@ -651,7 +652,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TEXT
+  m_Text: ??
 --- !u!222 &679891388
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -831,11 +832,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5769689679515008979, guid: f2118df0b65672e409e285b122bac3c6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.86
+      value: 14.07
       objectReference: {fileID: 0}
     - target: {fileID: 5769689679515008979, guid: f2118df0b65672e409e285b122bac3c6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.66
+      value: -5.12
       objectReference: {fileID: 0}
     - target: {fileID: 5769689679515008979, guid: f2118df0b65672e409e285b122bac3c6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -903,14 +904,15 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 679891386}
   m_Father: {fileID: 139227643}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 528, y: 206}
-  m_SizeDelta: {x: 200, y: 300}
+  m_AnchoredPosition: {x: 12, y: 275}
+  m_SizeDelta: {x: 350, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339046637
 MonoBehaviour:
@@ -964,11 +966,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582737626397746016, guid: 4f492b98231b9d14994ce86ce036b0aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.12
+      value: -13.77
       objectReference: {fileID: 0}
     - target: {fileID: 4582737626397746016, guid: 4f492b98231b9d14994ce86ce036b0aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.29
+      value: -5.48
       objectReference: {fileID: 0}
     - target: {fileID: 4582737626397746016, guid: 4f492b98231b9d14994ce86ce036b0aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1093,6 +1095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 120
+  timerTextTag: gameTimer
   timerText: {fileID: 293871544}
 --- !u!1001 &1698680153
 PrefabInstance:
@@ -1200,9 +1203,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2262635265573388436, guid: e3c406a37d3dbba41a0d880525bbdedf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1339046636}
-    - targetCorrespondingSourceObject: {fileID: 2262635265573388436, guid: e3c406a37d3dbba41a0d880525bbdedf, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 679891386}
     - targetCorrespondingSourceObject: {fileID: 2262635265573388436, guid: e3c406a37d3dbba41a0d880525bbdedf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 293871542}
