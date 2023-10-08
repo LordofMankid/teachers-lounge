@@ -132,19 +132,19 @@ private void GenerateRandomTask()
 
         if (task.description == "Grading")
         {
-            return new Vector2(4f, 2f); // Example position for "Grading" task
+            return new Vector2(14f, 7f); // Example position for "Grading" task
         }
         else if (task.description == "Update Software")
         {
-            return new Vector2(-4f, 2f); // Example position for "Update Software" task
+            return new Vector2(-14f, 7f); // Example position for "Update Software" task
         }
         else if (task.description == "Handle an Injury")
         {
-            return new Vector2(4f, -2f);
+            return new Vector2(14f, -3f);
         }
         else if (task.description == "Lesson Planning")
         {
-            return new Vector2(-4f, -2f);
+            return new Vector2(-14f, -3f);
         }
         // Add more conditions for other tasks
 
