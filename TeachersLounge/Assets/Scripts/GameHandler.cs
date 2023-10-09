@@ -20,20 +20,25 @@ public class GameHandler : MonoBehaviour {
     public void RestartGame(){
         Time.timeScale = 1f;
         GameObject.FindWithTag("GameHandler").GetComponent<GameHandler_PauseMenu>().setBool(false);
+        GameObject.FindWithTag("GameHandler").GetComponent<EndScene>().setBool(false);
         SceneManager.LoadScene("Main Menu");
     }
 
      public void QuitGame() {
-                #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-                #else
-                Application.Quit();
-                #endif
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
       }
 
     public void AddPoints(int point){
         pointsNum += point;
         UpdatePoints();
+    }
+    
+    public int ShowPoints(){
+        return pointsNum;
     }
 
     void UpdatePoints(){

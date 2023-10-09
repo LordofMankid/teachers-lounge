@@ -21,7 +21,7 @@ public class myTimer : MonoBehaviour {
             }
             if (gameTime <= 0){
                 gameTime = 0;
-                SceneManager.LoadScene("EndScene");
+                GameObject.FindWithTag("GameHandler").GetComponent<EndScene>().setBool(true);
             }   
       }
 
