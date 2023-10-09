@@ -108,8 +108,7 @@ public class TaskManager : MonoBehaviour
                 // Create the task description string with newlines
                 string descriptionText = "Task: " + randomTask.description +
                                          "\nLocation: " + randomTask.locationName +
-                                         "\nCost: " + randomTask.cost +
-                                         "\nPoints: " + randomTask.points;
+                                         "\nCost: " + randomTask.cost;
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;
