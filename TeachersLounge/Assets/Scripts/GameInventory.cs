@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class GameInventory : MonoBehaviour {
       public GameObject InventoryMenu;
-      //public GameObject CraftMenu;
       public bool InvIsOpen = false;
 
-      //5 Inventory Items:
+      //7 Inventory Items:
     public static bool item1bool = false;
     public static bool item2bool = false;
     public static bool item3bool = false;
@@ -50,7 +49,6 @@ public class GameInventory : MonoBehaviour {
  
       void Start(){
             InventoryMenu.SetActive(true);
-            //CraftMenu.SetActive(false);
             InventoryDisplay();
       }
 
@@ -67,9 +65,6 @@ public class GameInventory : MonoBehaviour {
             if (item5bool == true) {item5image.SetActive(true);} else {item5image.SetActive(false);}
             if (item6bool == true) {item6image.SetActive(true);} else {item6image.SetActive(false);}
             if (item7bool == true) {item7image.SetActive(true);} else {item7image.SetActive(false);}
-
-            //Text coinTextB = coinText.GetComponent<Text>();
-            //coinTextB.text = ("COINS: " + coins);
 
             // Item number updates. Comment out if each item is unique (2/2).
             Text item1TextB = item1Text.GetComponent<Text>();
@@ -113,26 +108,41 @@ public class GameInventory : MonoBehaviour {
 
       public bool InventoryRemove(string item){
             string itemRemove = item;
-        bool success = true;
+            bool success = true;
             if (itemRemove == "Paper") {
-                  item1num -= 1;
-                  if (item1num <= 0) { item1bool =false; }
-                  // Add any other intended effects: new item crafted, speed boost, slow time, etc
+                  if(item1num <= 0){
+                      success = false;
+                  } else{
+                      item1num -= 1;
+                  }
+                  if (item1num <= 0) { 
+                        item1bool =false; 
+                        if (item1num <= 0) { item1bool =false; }
+                  }
              }
              else if (itemRemove == "Book") {
-                   item2num -= 1;
-                   if (item2num <= 0) { item2bool =false; }
-            //       // Add any other intended effects
+                  if(item2num <= 0){
+                      success = false;
+                  } else{
+                      item2num -= 1;
+                      if (item2num <= 0) { item2bool =false; }
+                  }
                }
              else if (itemRemove == "Laptop") {
-                   item3num -= 1;
-                   if (item3num <= 0) { item3bool =false; }
-                     // Add any other intended effects
+                   if(item3num <= 0){
+                      success = false;
+                  } else{
+                      item3num -= 1;
+                      if (item3num <= 0) { item3bool =false; }
+                  }
              }
              else if (itemRemove == "First Aid") {
-                   item4num -= 1;
-                   if (item4num <= 0) { item4bool =false; }
-                     // Add any other intended effects
+                  if(item4num <= 0){
+                      success = false;
+                  } else{
+                      item4num -= 1;   
+                  }
+                 if (item4num <= 0) { item4bool =false; }  
              }
              else if (itemRemove == "item5") {
                    item5num -= 1;
@@ -154,21 +164,12 @@ public class GameInventory : MonoBehaviour {
         return success;
       }
 
-      //public void CoinChange(int amount){
-            //coins +=amount;
-            //InventoryDisplay();
-      //}
-
       // Open and Close the Inventory. Use this function on a button next to the inventory bar.
       public void OpenCloseInventory(){
             if (InvIsOpen){ InventoryMenu.SetActive(false); }
             else { InventoryMenu.SetActive(true); }
             InvIsOpen = !InvIsOpen;
       }
-
-      //Open and Close the Cookbook
-      //public void OpenCraftBook(){CraftMenu.SetActive(true);}
-      //public void CloseCraftBook(){CraftMenu.SetActive(false);}
 
       // Reset all static inventory values on game restart.
       public void ResetAllInventory(){
