@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class myTimer : MonoBehaviour {
        public GameObject timerText;
-       public int gameTime = 500;
+       public int gameTime = 120;
        private float timer = 0f;
 
        void Start () {
