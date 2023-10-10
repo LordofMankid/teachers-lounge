@@ -21,6 +21,7 @@ public class GameHandler : MonoBehaviour {
         Time.timeScale = 1f;
         GameObject.FindWithTag("GameHandler").GetComponent<GameHandler_PauseMenu>().setBool(false);
         GameObject.FindWithTag("GameHandler").GetComponent<EndScene>().setBool(false);
+        GameObject.FindWithTag("GameHandler").GetComponent<GameInventory>().ResetAllInventory();
         SceneManager.LoadScene("Main Menu");
     }
 
