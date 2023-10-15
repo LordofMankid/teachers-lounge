@@ -41,7 +41,7 @@ public class TaskManager : MonoBehaviour
         potentialTasks.Add(new Task("Print Materials", "Library", new List<string> { "Paper" }, 10));
         potentialTasks.Add(new Task("Pop Quiz", "Classroom", new List<string> { "Pen", "Paper", "Paper", "Paper" }, 20));
         potentialTasks.Add(new Task("Movie Day", "Classroom", new List<string> { "Laptop", "Projector" }, 15));
-        potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>(), 5));
+        potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>{"None"}, 5));
         potentialTasks.Add(new Task("Checkup", "Nurse's Office", new List<string> { "Pen", "Paper", "First Aid Kit" }, 15));
         potentialTasks.Add(new Task("Teach a Game Design Class", "Computer Lab", new List<string> { "Laptop", "Projector", "Book" }, 25));
 
@@ -112,7 +112,8 @@ public class TaskManager : MonoBehaviour
                 // Create the task description string
                 string descriptionText = "Task: " + randomTask.description +
                                         "\nLocation: " + randomTask.locationName +
-                                        "\nResource Costs: " + string.Join(", ", randomTask.cost);
+                                        "\nResource Costs: " + GetResourceCostsText(randomTask.cost) +
+                                        "\nPoints: " + randomTask.points;
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;
@@ -130,6 +131,46 @@ public class TaskManager : MonoBehaviour
             Debug.LogError("potentialTasks is empty! Add tasks to the list.");
         }
     }
+
+    // Helper function to format resource costs with quantities
+private string GetResourceCostsText(List<string> resourceCosts)
+{
+    if (resourceCosts[0] != "None") {
+        Dictionary<string, int> resourceQuantities = new Dictionary<string, int>();
+
+        // Count the occurrences of each resource
+        foreach (string resource in resourceCosts)
+        {
+            if (resourceQuantities.ContainsKey(resource))
+            {
+                resourceQuantities[resource]++;
+            }
+            else
+            {
+                resourceQuantities[resource] = 1;
+            }
+        }
+
+        // Create the formatted text
+        List<string> formattedResources = new List<string>();
+        foreach (var entry in resourceQuantities)
+        {
+            if (entry.Value > 1)
+            {
+                formattedResources.Add(entry.Value + " " + entry.Key + "s");
+            }
+            else
+            {
+                formattedResources.Add(entry.Value + " " + entry.Key);
+            }
+        }
+
+        return string.Join(", ", formattedResources);
+
+    } else {
+        return "None";
+    }
+}
 
     private IEnumerator RemoveTaskAfterDelay(Task task, GameObject toBeRemoved) {
         yield return new WaitForSeconds(taskDuration);
