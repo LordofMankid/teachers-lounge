@@ -112,8 +112,7 @@ public class TaskManager : MonoBehaviour
                 // Create the task description string
                 string descriptionText = "Task: " + randomTask.description +
                                         "\nLocation: " + randomTask.locationName +
-                                        "\nResource Costs: " + string.Join(", ", randomTask.cost) +
-                                        "\nPoints: " + randomTask.points;
+                                        "\nResource Costs: " + string.Join(", ", randomTask.cost);
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;

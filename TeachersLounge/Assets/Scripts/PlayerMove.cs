@@ -2,22 +2,35 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public class PlayerMove : MonoBehaviour {
+public class PlayerMoveAround : MonoBehaviour {
+      public Rigidbody2D rb2D;
+      private bool FaceRight = false; // determine which way player is facing.
+      public static float runSpeed = 8f;
+      public float startSpeed = 8f;
+      public bool isAlive = true;
 
-      public Rigidbody2D rb;
-      public float moveSpeed = 5f;
-      public Vector2 movement;
-
-      // Auto-load the RigidBody component into the variable:
       void Start(){
-            rb = GetComponent<Rigidbody2D> ();
+           rb2D = transform.GetComponent<Rigidbody2D>();
       }
 
-      // Listen for player input to move the object:
-      void FixedUpdate(){
-            movement.x = Input.GetAxisRaw ("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+      void Update(){
+            Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+           if (isAlive == true){
+                  transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
+                  // Turning. Reverse if input is moving the Player right and Player faces left.
+                 if ((hvMove.x <0 && !FaceRight) || (hvMove.x >0 && FaceRight)){
+                        playerTurn();
+                  }
+            }
       }
 
-} 
+      private void playerTurn(){
+            // NOTE: Switch player facing label
+            FaceRight = !FaceRight;
+
+            // NOTE: Multiply player's x local scale by -1.
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
+      }
+}

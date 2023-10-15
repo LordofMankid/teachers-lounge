@@ -5,10 +5,14 @@ using UnityEngine;
 public class TaskIcon : MonoBehaviour
 {
     private TaskManager.Task associatedTask;
+    private bool available;
+    private int len;
 
     public void SetTask(TaskManager.Task task)
     {
         associatedTask = task;
+        available = true;
+        len = associatedTask.cost.Count;
     }
 
     public TaskManager.Task GetTask()
@@ -17,14 +21,15 @@ public class TaskIcon : MonoBehaviour
     }
 
     public void completeTask(GameObject toBeDestroyed)
-    {
-        if(FindAnyObjectByType<GameInventory>().InventoryRemove(associatedTask.cost) == true)
-        {
+    {    
+        for(int i = 0; i < len; i++){
+            if(FindAnyObjectByType<GameInventory>().InventoryRemove(associatedTask.cost[i]) == false){
+                available = false;
+            }
+        }
+        if(available == true){
             FindAnyObjectByType<GameHandler>().AddPoints(associatedTask.points);
             Destroy(toBeDestroyed);
         }
-
-
-
     }
 }

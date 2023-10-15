@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class myTimer : MonoBehaviour {
        public GameObject timerText;
-       public int gameTime = 120;
+       public int gameTime = 300;
        private float timer = 0f;
 
        void Start () {
            UpdateTime();
        }
        void FixedUpdate(){
-           timer += 0.03f;
+           timer += 0.02f;
             if (timer >= 1f){
                 gameTime -= 1;
                 timer = 0;
