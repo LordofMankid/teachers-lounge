@@ -8,28 +8,24 @@ public class TaskManager : MonoBehaviour
     public GameObject taskIconPrefab;
     public Text taskDescriptionText;
     public List<Task> potentialTasks = new List<Task>();
-    public float initialTaskGenerationInterval = 4.0f; // Initial time between generating tasks in seconds
-    public float initialTaskRemovalInterval = 10.0f; // Initial time between removing tasks in seconds
-    public float timePressureStartDelay = 60.0f; // Time to start applying time pressure (1 minute)
-    public float timePressureTaskGenerationInterval = 2.0f; // Time between generating tasks under time pressure
-    public float timePressureTaskRemovalInterval = 6.0f; // Time between removing tasks under time pressure
+    public float taskGenerationInterval = 5.0f; // Time between generating tasks in seconds
+    public float taskDuration = 3.0f; // Time a task remains on the screen in seconds
 
+    // private float timeSinceLastTask = 0.0f;
     private List<Task> activeTasks = new List<Task>(); // Store active tasks
-    private bool isUnderTimePressure = false;
-    private float elapsedTime = 0.0f;
 
     public class Task
     {
         public string description;
         public string locationName;
-        public string cost;
+        public List<string> cost;
         public int points;
 
-        public Task(string desc, string locName, string taskCost, int pts)
+        public Task(string desc, string locName, List<string> costs, int pts)
         {
             description = desc;
             locationName = locName;
-            cost = taskCost;
+            cost = costs;
             points = pts;
         }
     }
@@ -38,15 +34,20 @@ public class TaskManager : MonoBehaviour
     void Start()
     {
         // Add tasks to the list
-        potentialTasks.Add(new Task("Grading", "Classroom", "Paper", 10));
-        potentialTasks.Add(new Task("Update Software", "Computer Lab", "Computer", 15));
-        potentialTasks.Add(new Task("Lesson Planning", "Library", "Book", 20));
-        potentialTasks.Add(new Task("Handle an Injury", "Nurse's Office", "First Aid Kit", 20));
-        potentialTasks.Add(new Task("Print Worksheets", "Library", "Paper", 20));
-        potentialTasks.Add(new Task("Teach a Class", "Classroom", "Laptop", 20));
+        potentialTasks.Add(new Task("Grading", "Classroom", new List<string> { "Pen", "Paper" }, 15));
+        potentialTasks.Add(new Task("Update Software", "Computer Lab", new List<string> { "Laptop", "Book" }, 10));
+        potentialTasks.Add(new Task("Lesson Research", "Library", new List<string> { "Paper", "Laptop", "Book", "Book" }, 20));
+        potentialTasks.Add(new Task("Handle a Crisis", "Nurse's Office", new List<string> { "First Aid Kit" }, 10));
+        potentialTasks.Add(new Task("Print Materials", "Library", new List<string> { "Paper" }, 10));
+        potentialTasks.Add(new Task("Pop Quiz", "Classroom", new List<string> { "Pen", "Paper", "Paper", "Paper" }, 20));
+        potentialTasks.Add(new Task("Movie Day", "Classroom", new List<string> { "Laptop", "Projector" }, 15));
+        potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>(), 5));
+        potentialTasks.Add(new Task("Checkup", "Nurse's Office", new List<string> { "Pen", "Paper", "First Aid Kit" }, 15));
+        potentialTasks.Add(new Task("Teach a Game Design Class", "Computer Lab", new List<string> { "Laptop", "Projector", "Book" }, 25));
 
         // Start generating tasks
         StartCoroutine(GenerateRandomTasks());
+        // GenerateRandomTask();
     }
 
     // Coroutine to continuously generate tasks
@@ -55,26 +56,33 @@ public class TaskManager : MonoBehaviour
         while (true)
         {
             GenerateRandomTask();
-
-            // Check if we should apply time pressure
-            if (elapsedTime >= timePressureStartDelay && !isUnderTimePressure)
-            {
-                isUnderTimePressure = true;
-                Debug.Log("Time pressure applied!");
-            }
-
-            // Adjust task generation and removal intervals based on time pressure
-            float taskGenerationInterval = isUnderTimePressure ? timePressureTaskGenerationInterval : initialTaskGenerationInterval;
-            float taskRemovalInterval = isUnderTimePressure ? timePressureTaskRemovalInterval : initialTaskRemovalInterval;
-
             yield return new WaitForSeconds(taskGenerationInterval);
         }
     }
 
+    // Coroutine to continuously generate tasks
+
+    // Update is called once per frame
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
+        // timeSinceLastTask += Time.deltaTime;
+
+        // // Check if it's time to generate a new task
+        // if (timeSinceLastTask >= taskGenerationInterval) {
+        //     GenerateRandomTask();
+        //     timeSinceLastTask = 0.0f;
+        // }
+
+        // // Check if it's time to remove tasks
+        // for (int i = activeTasks.Count - 1; i >= 0; i--) {
+        //     Task curr_task = activeTasks[i];
+        //     // curr_task.timeRemaining -= Time.deltaTime;
+        //     if (curr_task.timeRemaining <= 0) {
+        //         RemoveTask(curr_task);
+        //         activeTasks.RemoveAt(i);
+        //     }
+        // }
     }
 
     private void GenerateRandomTask()
@@ -91,11 +99,7 @@ public class TaskManager : MonoBehaviour
             // Instantiate the task icon prefab at the task position
             Vector2 taskPosition = GetTaskPositionForTask(randomTask);
             GameObject newTask = Instantiate(taskIconPrefab, taskPosition, Quaternion.identity);
-
-            // Set the task details for the TaskIcon component
-            TaskIcon taskIcon = newTask.GetComponent<TaskIcon>();
-            taskIcon.SetTask(randomTask);
-
+                newTask.GetComponent<TaskIcon>().SetTask(randomTask);
             // Find the Task Description Text GameObject by tag
             GameObject taskDescriptionTextObject = GameObject.FindGameObjectWithTag("TaskDescriptionText");
 
@@ -105,10 +109,11 @@ public class TaskManager : MonoBehaviour
                 // Get the Text component from the found GameObject
                 Text taskDescriptionText = taskDescriptionTextObject.GetComponent<Text>();
 
-                // Create the task description string with newlines
+                // Create the task description string
                 string descriptionText = "Task: " + randomTask.description +
-                                         "\nLocation: " + randomTask.locationName +
-                                         "\nCost: " + randomTask.cost;
+                                        "\nLocation: " + randomTask.locationName +
+                                        "\nResource Costs: " + string.Join(", ", randomTask.cost) +
+                                        "\nPoints: " + randomTask.points;
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;
@@ -117,8 +122,6 @@ public class TaskManager : MonoBehaviour
             {
                 Debug.LogError("TaskDescriptionText GameObject not found or not tagged!");
             }
-
-            Debug.Log("Task generated: " + randomTask.description);
 
             // Set timer for removing tasks
             StartCoroutine(RemoveTaskAfterDelay(randomTask, newTask));
@@ -129,12 +132,8 @@ public class TaskManager : MonoBehaviour
         }
     }
 
-    private IEnumerator RemoveTaskAfterDelay(Task task, GameObject toBeRemoved)
-    {
-        // Adjust task removal interval based on time pressure
-        float taskRemovalInterval = isUnderTimePressure ? timePressureTaskRemovalInterval : initialTaskRemovalInterval;
-
-        yield return new WaitForSeconds(taskRemovalInterval);
+    private IEnumerator RemoveTaskAfterDelay(Task task, GameObject toBeRemoved) {
+        yield return new WaitForSeconds(taskDuration);
 
         // Remove the task
         Debug.Log("Task removed: " + task.description);
