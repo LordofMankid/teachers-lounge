@@ -80,10 +80,10 @@ public class GameInventory : MonoBehaviour {
             item4TextB.text = ("FirstAid: " + item4num);
 
             Text item5TextB = item5Text.GetComponent<Text>();
-            item5TextB.text = ("Resource5:" + item5num);
+            item5TextB.text = ("Pencil:" + item5num);
 
             Text item6TextB = item6Text.GetComponent<Text>();
-            item6TextB.text = ("Resource6:" + item6num);
+            item6TextB.text = ("KeyBoard:" + item6num);
 
             Text item7TextB = item7Text.GetComponent<Text>();
             item7TextB.text = ("Resource7:" + item7num);
@@ -95,8 +95,8 @@ public class GameInventory : MonoBehaviour {
             else if (foundItemName == "Book") {item2bool = true; item2num ++;}
             else if (foundItemName == "Laptop") {item3bool = true; item3num ++;}
             else if (foundItemName == "First Aid") {item4bool = true; item4num ++;}
-            else if (foundItemName == "item5") {item5bool = true; item5num ++;}
-            else if (foundItemName == "item6") {item6bool = true; item6num ++;}
+            else if (foundItemName == "Pencil") {item5bool = true; item5num ++;}
+            else if (foundItemName == "KeyBoard") {item6bool = true; item6num ++;}
             else if (foundItemName == "item7") {item5bool = true; item7num ++;}
             else { Debug.Log("This item does not exist to be added"); }
             InventoryDisplay();
@@ -144,11 +144,11 @@ public class GameInventory : MonoBehaviour {
                   }
                  if (item4num <= 0) { item4bool =false; }  
              }
-             else if (itemRemove == "item5") {
+             else if (itemRemove == "Pencil") {
                    item5num -= 1;
                    if (item5num <= 0) { item5bool =false; }
                      // Add any other intended effects
-            }else if (itemRemove == "item6") {
+            }else if (itemRemove == "KeyBoard") {
                    item6num -= 1;
                    if (item6num <= 0) { item6bool =false; }
                      // Add any other intended effects

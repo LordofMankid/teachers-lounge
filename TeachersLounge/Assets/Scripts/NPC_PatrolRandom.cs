@@ -58,7 +58,7 @@ public class NPC_PatrolRandomPoints : MonoBehaviour {
 
                      float moveDirection = dir.x;
                      if (moveDirection < 0){
-                            transform.localScale = theScale * -1;
+                            transform.localScale = theScale * 1;
                      }
                      else if (moveDirection > 0){
                             transform.localScale = theScale;
