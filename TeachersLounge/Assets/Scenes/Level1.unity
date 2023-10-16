@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &24466272
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &213162732
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -935,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &636165113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1232,7 +1232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &661707506
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1666,7 +1666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1055940157
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3839,7 +3839,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1930248858
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4954,6 +4954,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4086342193989933191, guid: 245f2b8145f7368469cbd69260514e13, type: 3}
     - {fileID: 930352131371200340, guid: 245f2b8145f7368469cbd69260514e13, type: 3}
+    - {fileID: 8390031798418301318, guid: 245f2b8145f7368469cbd69260514e13, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 245f2b8145f7368469cbd69260514e13, type: 3}
@@ -4981,7 +4982,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 925134716}
-  gameTime: 300
 --- !u!114 &7162823622817924683
 MonoBehaviour:
   m_ObjectHideFlags: 0
