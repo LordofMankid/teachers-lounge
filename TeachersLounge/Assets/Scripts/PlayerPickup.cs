@@ -30,8 +30,8 @@ public class PlayerPickUp : MonoBehaviour
             gameInventory.InventoryAdd(itemName);
             StartCoroutine(DestroySound());
         }
-         
-         IEnumerator DestroySound(){
+
+        IEnumerator DestroySound(){
             yield return new WaitForSeconds(0.5f);
             gameObject.GetComponent<AudioSource>().Stop();
          }
