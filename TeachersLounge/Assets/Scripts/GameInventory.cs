@@ -152,10 +152,8 @@ public class GameInventory : MonoBehaviour {
                    item6num -= 1;
                    if (item6num <= 0) { item6bool =false; }
                      // Add any other intended effects
-            }else if (itemRemove == "item7") {
-                   item7num -= 1;
-                   if (item7num <= 0) { item7bool =false; }
-                     // Add any other intended effects
+            }else if (itemRemove == "None") {
+                    success = true;
             }
             else { Debug.Log("This item does not exist to be removed");
             success = false;    

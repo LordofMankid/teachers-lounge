@@ -41,7 +41,7 @@ public class TaskManager : MonoBehaviour
         potentialTasks.Add(new Task("Print Materials", "Library", new List<string> { "Paper" }, 10));
         potentialTasks.Add(new Task("Pop Quiz", "Classroom", new List<string> { "Pencil", "Paper", "Paper", "Paper" }, 20));
         potentialTasks.Add(new Task("Movie Day", "Classroom", new List<string> { "Laptop", "KeyBoard" }, 15));
-        potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>(){"Paper"}, 5));
+        potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>(){"None"}, 5));
         potentialTasks.Add(new Task("Checkup", "Nurse's Office", new List<string> { "Pencil", "Paper", "First Aid Kit" }, 15));
         potentialTasks.Add(new Task("Teach a Game Design Class", "Computer Lab", new List<string> { "Laptop", "KeyBoard", "Book" }, 25));
 

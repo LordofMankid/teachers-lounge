@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class myTimer : MonoBehaviour {
        public GameObject timerText;
-       public int gameTime = 300;
+       private int gameTime = 300;
        private float timer = 0f;
 
        void Start () {
            UpdateTime();
        }
        void FixedUpdate(){
-           timer += 0.02f;
+           timer += 0.03f;
             if (timer >= 1f){
                 gameTime -= 1;
                 timer = 0;
@@ -21,9 +21,6 @@ public class myTimer : MonoBehaviour {
             }
             if (gameTime <= 0){
                 gameTime = 0;
-                GameObject.FindWithTag("NPC1").SetActive(false);
-                GameObject.FindWithTag("NPC2").SetActive(false);
-                GameObject.FindWithTag("Resource").SetActive(false);
                 GameObject.FindWithTag("GameHandler").GetComponent<EndScene>().setBool(true);
             }   
       }
