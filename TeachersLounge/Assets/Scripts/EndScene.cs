@@ -11,8 +11,15 @@ public class EndScene : MonoBehaviour
     public GameObject pointsText;
     public int productivity;
     public GameHandler gameHandler;
+    private string novice;
+    private string intermediate;
+    private string expert;
+    public GameObject levelText;
        
         void Start (){
+                novice = "LEVEL: Novice\nSeems you are quite new at this.";
+                intermediate = "LEVEL: Intermediate\nYou've been doing this for quite some time!";
+                expert = "LEVEL: Expert\nNo child stands in your way!!";
                 endSceneUI.SetActive(false);
                 GameisOver = false;
         }
@@ -33,5 +40,16 @@ public class EndScene : MonoBehaviour
             }
             Text pointsTextB = pointsText.GetComponent<Text>();
             pointsTextB.text = "Your Productivity: " + productivity;
+
+            if(productivity < 100){
+                Text levelTextB = levelText.GetComponent<Text>();
+                levelTextB.text = novice;
+            } else if (productivity > 100 && productivity < 200){
+                Text levelTextB = levelText.GetComponent<Text>();
+                levelTextB.text = intermediate;
+            } else if(productivity > 200){
+                Text levelTextB = levelText.GetComponent<Text>();
+                levelTextB.text = expert;
+            }
         } 
 }
