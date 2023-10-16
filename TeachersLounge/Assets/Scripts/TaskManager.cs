@@ -187,15 +187,16 @@ private string GetResourceCostsText(List<string> resourceCosts)
 
         if (task.locationName == "Computer Lab")
         {
-            return new Vector2(14f, 7f); // Example position for "Grading" task
+            return new Vector2(14f, -3f); // Example position for "Update Software" task
         }
         else if (task.locationName == "Library")
         {
-            return new Vector2(-14f, 7f); // Example position for "Update Software" task
+            return new Vector2(14f, 7f);
+            
         }
         else if (task.locationName == "Classroom")
-        {
-            return new Vector2(14f, -3f);
+        {   
+            return new Vector2(-14f, 7f);
         }
         else if (task.locationName == "Nurse's Office")
         {

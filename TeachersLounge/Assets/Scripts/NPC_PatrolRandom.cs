@@ -71,12 +71,19 @@ public class NPC_PatrolRandomPoints : MonoBehaviour {
        public void OnCollisionEnter2D(Collision2D collision){
               if (collision.gameObject.tag == "Player") {
                      isAttacking = true;
+                     gameObject.GetComponent<AudioSource>().Play();
                      //anim.SetBool("Attack", true);
                      gameHandler.playerGetHit(damage);
                      //rend.material.color = new Color(2.4f, 0.9f, 0.9f, 0.5f);
                      //StartCoroutine(HitEnemy());
+                     StartCoroutine(DestroySound());
               }
        }
+
+       IEnumerator DestroySound(){
+            yield return new WaitForSeconds(0.9f);
+            gameObject.GetComponent<AudioSource>().Stop();
+         }
 
        public void OnCollisionExit2D(Collision2D collision){
               if (collision.gameObject.tag == "Player") {

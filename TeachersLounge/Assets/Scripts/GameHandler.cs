@@ -94,6 +94,9 @@ public class GameHandler : MonoBehaviour {
       IEnumerator DeathPause(){
             player.GetComponent<PlayerMoveAround>().isAlive = false;
             yield return new WaitForSeconds(1.0f);
+            GameObject.FindWithTag("NPC1").SetActive(false);
+            GameObject.FindWithTag("NPC2").SetActive(false);
+            GameObject.FindWithTag("Resource").SetActive(false);
             GameObject.FindWithTag("GameHandler").GetComponent<EndLose>().setBool(true);
       }
 }

@@ -21,6 +21,9 @@ public class myTimer : MonoBehaviour {
             }
             if (gameTime <= 0){
                 gameTime = 0;
+                GameObject.FindWithTag("NPC1").SetActive(false);
+                GameObject.FindWithTag("NPC2").SetActive(false);
+                GameObject.FindWithTag("Resource").SetActive(false);
                 GameObject.FindWithTag("GameHandler").GetComponent<EndScene>().setBool(true);
             }   
       }
