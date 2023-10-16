@@ -8,8 +8,8 @@ public class TaskManager : MonoBehaviour
     public GameObject taskIconPrefab;
     public Text taskDescriptionText;
     public List<Task> potentialTasks = new List<Task>();
-    public float taskGenerationInterval = 5.0f; // Time between generating tasks in seconds
-    public float taskDuration = 3.0f; // Time a task remains on the screen in seconds
+    public float taskGenerationInterval = 15.0f; // Time between generating tasks in seconds
+    public float taskDuration = 15.0f; // Time a task remains on the screen in seconds
 
     // private float timeSinceLastTask = 0.0f;
     private List<Task> activeTasks = new List<Task>(); // Store active tasks
@@ -112,7 +112,8 @@ public class TaskManager : MonoBehaviour
                 // Create the task description string
                 string descriptionText = "Task: " + randomTask.description +
                                         "\nLocation: " + randomTask.locationName +
-                                        "\nResource Costs: " + GetResourceCostsText(randomTask.cost);
+                                        "\nResource Costs: " + GetResourceCostsText(randomTask.cost) +
+                                        "\nPoints: " + randomTask.points;
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;
@@ -187,20 +188,20 @@ private string GetResourceCostsText(List<string> resourceCosts)
 
         if (task.locationName == "Computer Lab")
         {
-            return new Vector2(14f, -3f); // Example position for "Update Software" task
+            return new Vector2(14f, -3.5f); // Example position for "Update Software" task
         }
         else if (task.locationName == "Library")
         {
-            return new Vector2(14f, 7f);
+            return new Vector2(14f, 6.5f);
             
         }
         else if (task.locationName == "Classroom")
         {   
-            return new Vector2(-14f, 7f);
+            return new Vector2(-14f, 6.5f);
         }
         else if (task.locationName == "Nurse's Office")
         {
-            return new Vector2(-14f, -3f);
+            return new Vector2(-14f, -3.5f);
         }
         // Add more conditions for other tasks
 

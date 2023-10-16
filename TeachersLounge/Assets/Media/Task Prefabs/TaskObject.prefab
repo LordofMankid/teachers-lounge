@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskIconPrefab: {fileID: 9060303806374738084, guid: 545610842ebd218489d35b75a69d367f, type: 3}
   taskDescriptionText: {fileID: 0}
-  taskGenerationInterval: 5
-  taskDuration: 3
+  taskGenerationInterval: 15
+  taskDuration: 15
