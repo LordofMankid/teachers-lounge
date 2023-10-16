@@ -77,7 +77,7 @@ public class GameInventory : MonoBehaviour {
             item3TextB.text = ("Laptop: "  + item3num);
 
             Text item4TextB = item4Text.GetComponent<Text>();
-            item4TextB.text = ("FirstAid: " + item4num);
+            item4TextB.text = ("FirstAidKit: " + item4num);
 
             Text item5TextB = item5Text.GetComponent<Text>();
             item5TextB.text = ("Pencil:" + item5num);
@@ -94,7 +94,7 @@ public class GameInventory : MonoBehaviour {
             if (foundItemName == "Paper") {item1bool = true; item1num ++;}
             else if (foundItemName == "Book") {item2bool = true; item2num ++;}
             else if (foundItemName == "Laptop") {item3bool = true; item3num ++;}
-            else if (foundItemName == "First Aid") {item4bool = true; item4num ++;}
+            else if (foundItemName == "FirstAidKit") {item4bool = true; item4num ++;}
             else if (foundItemName == "Pencil") {item5bool = true; item5num ++;}
             else if (foundItemName == "KeyBoard") {item6bool = true; item6num ++;}
             else if (foundItemName == "item7") {item5bool = true; item7num ++;}
@@ -136,7 +136,7 @@ public class GameInventory : MonoBehaviour {
                       if (item3num <= 0) { item3bool =false; }
                   }
              }
-             else if (itemRemove == "First Aid") {
+             else if (itemRemove == "FirstAidKit") {
                   if(item4num <= 0){
                       success = false;
                   } else{

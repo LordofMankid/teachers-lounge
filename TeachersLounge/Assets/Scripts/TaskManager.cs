@@ -37,12 +37,12 @@ public class TaskManager : MonoBehaviour
         potentialTasks.Add(new Task("Grading", "Classroom", new List<string> { "Pencil", "Paper" }, 15));
         potentialTasks.Add(new Task("Update Software", "Computer Lab", new List<string> { "Laptop", "Book" }, 10));
         potentialTasks.Add(new Task("Lesson Research", "Library", new List<string> { "Paper", "Laptop", "Book", "Book" }, 20));
-        potentialTasks.Add(new Task("Handle a Crisis", "Nurse's Office", new List<string> { "First Aid Kit" }, 10));
+        potentialTasks.Add(new Task("Handle a Crisis", "Nurse's Office", new List<string> { "FirstAidKit" }, 10));
         potentialTasks.Add(new Task("Print Materials", "Library", new List<string> { "Paper" }, 10));
         potentialTasks.Add(new Task("Pop Quiz", "Classroom", new List<string> { "Pencil", "Paper", "Paper", "Paper" }, 20));
         potentialTasks.Add(new Task("Movie Day", "Classroom", new List<string> { "Laptop", "KeyBoard" }, 15));
         potentialTasks.Add(new Task("Classroom Management", "Classroom", new List<string>(){"None"}, 5));
-        potentialTasks.Add(new Task("Checkup", "Nurse's Office", new List<string> { "Pencil", "Paper", "First Aid Kit" }, 15));
+        potentialTasks.Add(new Task("Checkup", "Nurse's Office", new List<string> { "Pencil", "Paper", "FirstAidKit" }, 15));
         potentialTasks.Add(new Task("Teach a Game Design Class", "Computer Lab", new List<string> { "Laptop", "KeyBoard", "Book" }, 25));
 
         // Start generating tasks
