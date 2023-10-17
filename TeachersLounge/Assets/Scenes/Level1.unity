@@ -810,6 +810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca427b28d394cc4daf3c8fbdd35d2c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechBubbleCanvas: {fileID: 0}
 --- !u!4 &516042447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2791886806589321009, guid: 545610842ebd218489d35b75a69d367f, type: 3}
