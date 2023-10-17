@@ -7,6 +7,7 @@ public class TaskIcon : MonoBehaviour
     private TaskManager.Task associatedTask;
     private bool available;
     private int len;
+    private TaskManager taskManager;
 
     public void SetTask(TaskManager.Task task)
     {
@@ -30,6 +31,8 @@ public class TaskIcon : MonoBehaviour
         if(available == true){
             FindAnyObjectByType<GameHandler>().AddPoints(associatedTask.points);
             Destroy(toBeDestroyed);
+            FindObjectOfType<TaskManager>().CompleteAndGenerateNewTask();
+            // taskManager.GenerateRandomTask();
         }
     }
 }

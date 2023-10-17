@@ -8,11 +8,12 @@ public class TaskManager : MonoBehaviour
     public GameObject taskIconPrefab;
     public Text taskDescriptionText;
     public List<Task> potentialTasks = new List<Task>();
-    public float taskGenerationInterval = 15.0f; // Time between generating tasks in seconds
+    // public float taskGenerationInterval = 15.0f; // Time between generating tasks in seconds
     public float taskDuration = 15.0f; // Time a task remains on the screen in seconds
 
-    // private float timeSinceLastTask = 0.0f;
+    private float timeSinceLastTask = 0.0f;
     private List<Task> activeTasks = new List<Task>(); // Store active tasks
+    private bool taskCompleted = false;
 
     public class Task
     {
@@ -46,19 +47,19 @@ public class TaskManager : MonoBehaviour
         potentialTasks.Add(new Task("Teach a Game Design Class", "Computer Lab", new List<string> { "Laptop", "KeyBoard", "Book" }, 25));
 
         // Start generating tasks
-        StartCoroutine(GenerateRandomTasks());
-        // GenerateRandomTask();
+        // StartCoroutine(GenerateRandomTasks());
+        GenerateRandomTask();
     }
 
     // Coroutine to continuously generate tasks
-    private IEnumerator GenerateRandomTasks()
-    {
-        while (true)
-        {
-            GenerateRandomTask();
-            yield return new WaitForSeconds(taskGenerationInterval);
-        }
-    }
+    // private IEnumerator GenerateRandomTasks()
+    // {
+    //     while (true)
+    //     {
+    //         GenerateRandomTask();
+    //         yield return new WaitForSeconds(taskGenerationInterval);
+    //     }
+    // }
 
     // Coroutine to continuously generate tasks
 
@@ -66,6 +67,14 @@ public class TaskManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeSinceLastTask += Time.deltaTime;
+
+        // Check if it's time to generate a new task
+        if ((taskCompleted == true) || (timeSinceLastTask >= taskDuration)) {
+            taskCompleted = false;
+            GenerateRandomTask();
+            timeSinceLastTask = 0.0f;
+        }
         // timeSinceLastTask += Time.deltaTime;
 
         // // Check if it's time to generate a new task
@@ -83,6 +92,10 @@ public class TaskManager : MonoBehaviour
         //         activeTasks.RemoveAt(i);
         //     }
         // }
+    }
+
+    public void CompleteAndGenerateNewTask() {
+        taskCompleted = true;
     }
 
     private void GenerateRandomTask()
@@ -112,8 +125,8 @@ public class TaskManager : MonoBehaviour
                 // Create the task description string
                 string descriptionText = "Task: " + randomTask.description +
                                         "\nLocation: " + randomTask.locationName +
-                                        "\nResource Costs: " + GetResourceCostsText(randomTask.cost) +
-                                        "\nPoints: " + randomTask.points;
+                                        "\nResource Costs: " + GetResourceCostsText(randomTask.cost);
+                                        // "\nPoints: " + randomTask.points;
 
                 // Update the text component
                 taskDescriptionText.text = descriptionText;
