@@ -8,6 +8,11 @@ public class EndLose : MonoBehaviour
 {
     public static bool GameisOver = false;
     public GameObject endLoseUI;
+    public GameObject classTitleUI;
+    public GameObject nurseUI;
+    public GameObject labUI;
+    public GameObject libUI;
+    public GameObject loungeUI;
     public GameObject pointsText;
     public int productivity;
     public GameHandler gameHandler;
@@ -28,6 +33,11 @@ public class EndLose : MonoBehaviour
         public void setBool( bool value) {
             GameisOver = value;
             endLoseUI.SetActive(GameisOver);
+            classTitleUI.SetActive(false);
+            nurseUI.SetActive(false);
+            labUI.SetActive(false);
+            libUI.SetActive(false);
+            loungeUI.SetActive(false);
             UpdatePoints();
         }
 

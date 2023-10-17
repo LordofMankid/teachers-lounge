@@ -8,6 +8,8 @@ public class GameHandler_PauseMenu : MonoBehaviour {
 
         public static bool GameisPaused = false;
         public GameObject pauseMenuUI;
+        public GameObject toleranceTextUI;
+        public GameObject toleranceBG;
        
         void Start (){
                 pauseMenuUI.SetActive(false);
@@ -31,12 +33,16 @@ public class GameHandler_PauseMenu : MonoBehaviour {
 
         void Pause(){
                 pauseMenuUI.SetActive(true);
+                toleranceTextUI.SetActive(false);
+                toleranceBG.SetActive(false);
                 Time.timeScale = 0f;
                 GameisPaused = true;
         }
 
         public void Resume(){
                 pauseMenuUI.SetActive(false);
+                toleranceTextUI.SetActive(true);
+                toleranceBG.SetActive(true);
                 Time.timeScale = 1f;
                 GameisPaused = false;
         }

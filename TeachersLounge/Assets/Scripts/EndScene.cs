@@ -15,6 +15,11 @@ public class EndScene : MonoBehaviour
     private string intermediate;
     private string expert;
     public GameObject levelText;
+    public GameObject classTitleUI;
+    public GameObject nurseUI;
+    public GameObject labUI;
+    public GameObject libUI;
+    public GameObject loungeUI;
        
         void Start (){
                 novice = "LEVEL: Novice\nSeems you are quite new at this.";
@@ -27,6 +32,11 @@ public class EndScene : MonoBehaviour
         public void setBool( bool value) {
             GameisOver = value;
             endSceneUI.SetActive(GameisOver);
+            classTitleUI.SetActive(false);
+            nurseUI.SetActive(false);
+            labUI.SetActive(false);
+            libUI.SetActive(false);
+            loungeUI.SetActive(false);
             UpdatePoints();
         }
 
