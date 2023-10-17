@@ -68,7 +68,6 @@ public class TaskManager : MonoBehaviour
     void Update()
     {
         timeSinceLastTask += Time.deltaTime;
-
         // Check if it's time to generate a new task
         if ((taskCompleted == true) || (timeSinceLastTask >= taskDuration)) {
             taskCompleted = false;

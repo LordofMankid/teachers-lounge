@@ -27,6 +27,7 @@ public class GameHandler : MonoBehaviour {
     }
 
     public void StartGame(){
+        GameObject.FindWithTag("GameHandler").GetComponent<GameInventory>().ResetAllInventory();
         SceneManager.LoadScene("Level1");
     }
 

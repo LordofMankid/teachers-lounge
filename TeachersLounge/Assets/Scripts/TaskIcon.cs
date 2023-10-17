@@ -24,11 +24,14 @@ public class TaskIcon : MonoBehaviour
     public void completeTask(GameObject toBeDestroyed)
     {    
         for(int i = 0; i < len; i++){
-            if(FindAnyObjectByType<GameInventory>().InventoryRemove(associatedTask.cost[i]) == false){
+            if(FindAnyObjectByType<GameInventory>().InventoryCheck(associatedTask.cost[i]) == false){
                 available = false;
             }
         }
         if(available == true){
+            for(int i = 0; i < len; i++){
+                FindAnyObjectByType<GameInventory>().InventoryRemove(associatedTask.cost[i]);
+            }
             FindAnyObjectByType<GameHandler>().AddPoints(associatedTask.points);
             Destroy(toBeDestroyed);
             FindObjectOfType<TaskManager>().CompleteAndGenerateNewTask();

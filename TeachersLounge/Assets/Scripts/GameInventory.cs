@@ -106,12 +106,52 @@ public class GameInventory : MonoBehaviour {
             }
       }
 
-      public bool InventoryRemove(string item){
+      public bool InventoryCheck(string item){
             string itemRemove = item;
             bool success = true;
             if (itemRemove == "Paper") {
                   if(item1num <= 0){
                       success = false;
+                  } 
+             }
+             else if (itemRemove == "Book") {
+                  if(item2num <= 0){
+                      success = false;
+                  } 
+             }
+             else if (itemRemove == "Laptop") {
+                   if(item3num <= 0){
+                      success = false;
+                  } 
+             }
+             else if (itemRemove == "FirstAidKit") {
+                  if(item4num <= 0){
+                      success = false;
+                  } 
+             }
+             else if (itemRemove == "Pencil") {
+                  if(item5num <= 0){
+                      success = false;
+                  }  
+            }else if (itemRemove == "KeyBoard") {
+                  if(item6num <= 0){
+                      success = false;
+                  }   
+            }else if (itemRemove == "None") {
+                    success = true;
+            }
+            else { Debug.Log("This item does not exist to be removed");
+            success = false;    
+        }
+        return success;
+      }
+
+      public void InventoryRemove(string item){
+            string itemRemove = item;
+            //bool success = true;
+            if (itemRemove == "Paper") {
+                  if(item1num <= 0){
+                      //success = false;
                   } else{
                       item1num -= 1;
                   }
@@ -122,7 +162,7 @@ public class GameInventory : MonoBehaviour {
              }
              else if (itemRemove == "Book") {
                   if(item2num <= 0){
-                      success = false;
+                      //success = false;
                   } else{
                       item2num -= 1;
                       if (item2num <= 0) { item2bool =false; }
@@ -130,7 +170,7 @@ public class GameInventory : MonoBehaviour {
                }
              else if (itemRemove == "Laptop") {
                    if(item3num <= 0){
-                      success = false;
+                      //success = false;
                   } else{
                       item3num -= 1;
                       if (item3num <= 0) { item3bool =false; }
@@ -138,28 +178,34 @@ public class GameInventory : MonoBehaviour {
              }
              else if (itemRemove == "FirstAidKit") {
                   if(item4num <= 0){
-                      success = false;
+                      //success = false;
                   } else{
                       item4num -= 1;   
                   }
                  if (item4num <= 0) { item4bool =false; }  
              }
              else if (itemRemove == "Pencil") {
-                   item5num -= 1;
-                   if (item5num <= 0) { item5bool =false; }
-                     // Add any other intended effects
+                  if(item5num <= 0){
+                      //success = false;
+                  } else{
+                      item5num -= 1;
+                      if (item5num <= 0) { item5bool =false; }
+                  }
             }else if (itemRemove == "KeyBoard") {
-                   item6num -= 1;
-                   if (item6num <= 0) { item6bool =false; }
-                     // Add any other intended effects
+                   if(item3num <= 0){
+                      //success = false;
+                  } else{
+                      item3num -= 1;
+                      if (item3num <= 0) { item3bool =false; }
+                  }
             }else if (itemRemove == "None") {
-                    success = true;
+                    //success = true;
             }
             else { Debug.Log("This item does not exist to be removed");
-            success = false;    
+            //success = false;    
         }
             InventoryDisplay();
-        return success;
+        //return success;
       }
 
       // Open and Close the Inventory. Use this function on a button next to the inventory bar.
